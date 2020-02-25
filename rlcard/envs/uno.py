@@ -21,7 +21,7 @@ class UnoEnv(Env):
             player (int): Player id
         '''
         state = self.game.get_state(player)
-        print('\n=============== Your Hand ===============')
+        print(f'\n=============== TOUR À {player} ===============')
         UnoCard.print_cards(state['hand'])
         print('')
         print('=============== Last Card ===============')

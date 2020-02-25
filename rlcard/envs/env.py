@@ -98,8 +98,8 @@ class Env(object):
             return state, reward, done
 
         elif self.human_mode:
-            self.print_state(self.active_player)
-
+            pass
+        self.print_state(self.active_player)
         return self.extract_state(state), reward, done
 
     def reset(self):
@@ -130,7 +130,7 @@ class Env(object):
                         print('\r>> Agent {} chooses '.format(player_id), end='')
                         self.print_action(action)
                         print('')
-                    self.print_state(self.active_player)
+                self.print_state(self.active_player)
                 break
             else:
                 if self.human_mode:
@@ -232,7 +232,8 @@ class Env(object):
         while not self.is_over():
             # Agent plays
             if not is_training:
-                action = self.agents[player_id].eval_step(state)
+                self.print_state(player_id)
+                action = self.agents[player_id].eval_step(self.game.get_state(player_id))
             else:
                 action = self.agents[player_id].step(state)
 
